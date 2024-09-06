@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import {v4 as uuid} from 'uuid';
 import ColorPicker from './ColorPicker';
@@ -25,6 +25,7 @@ function App() {
           <Route path="/colors" element={<ColorPicker colors={colors}/>} />
           <Route path="/colors/:name" element={<Color colors={colors}/>} />
           <Route path="/colors/new" element={<NewColorForm addColor={addColor}/>} />
+          <Route path='*' element={<Navigate to="/colors" />} />
         </Routes>
       </BrowserRouter>      
     </div>
