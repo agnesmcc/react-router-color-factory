@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+import { useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
+import {v4 as uuid} from 'uuid';
+import ColorPicker from './ColorPicker';
 
 function App() {
+  const initialState = [
+    {"id": uuid(), "name": "red"},
+    {"id": uuid(), "name": "green"},
+    {"id": uuid(), "name": "blue"},
+  ]
+  const [colors, setColors] = useState(initialState);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<ColorPicker colors={colors}/>} />
+        </Routes>
+      </BrowserRouter>      
     </div>
   );
 }
