@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const ColorPicker = ({colors}) => {
     return (
@@ -7,7 +8,7 @@ const ColorPicker = ({colors}) => {
             <h3>Please select a color</h3>
             <div>
                 {colors.map(color => (
-                    <div key={color.id}>{color.name}</div>
+                    <div key={color.id}><Link to={`/color/${color.name}`}>{color.name}</Link></div>
                 ))}
             </div>
         </div>

@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import {v4 as uuid} from 'uuid';
 import ColorPicker from './ColorPicker';
+import Color from './Color.js';
 
 function App() {
   const initialState = [
@@ -17,6 +18,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<ColorPicker colors={colors}/>} />
+          <Route path="/color/:name" element={<Color/>} />
         </Routes>
       </BrowserRouter>      
     </div>
