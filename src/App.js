@@ -4,6 +4,7 @@ import './App.css';
 import {v4 as uuid} from 'uuid';
 import ColorPicker from './ColorPicker';
 import Color from './Color.js';
+import NewColorForm from './NewColorForm.js';
 
 function App() {
   const initialState = [
@@ -13,12 +14,17 @@ function App() {
   ]
   const [colors, setColors] = useState(initialState);
 
+  const addColor = (color) => {
+    setColors([{id: uuid(), name: color}, ...colors])
+  }
+
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
           <Route path="/colors" element={<ColorPicker colors={colors}/>} />
           <Route path="/colors/:name" element={<Color/>} />
+          <Route path="/colors/new" element={<NewColorForm addColor={addColor}/>} />
         </Routes>
       </BrowserRouter>      
     </div>
