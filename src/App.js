@@ -23,7 +23,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/colors" element={<ColorPicker colors={colors}/>} />
-          <Route path="/colors/:name" element={<Color/>} />
+          <Route path="/colors/:name" element={<Color colors={colors}/>} />
           <Route path="/colors/new" element={<NewColorForm addColor={addColor}/>} />
         </Routes>
       </BrowserRouter>      

@@ -1,7 +1,7 @@
 import {React, useEffect} from "react";
-import { useParams, useSearchParams, Link } from "react-router-dom";
+import { useParams, useSearchParams, Link, Navigate } from "react-router-dom";
 
-const Color = () => {
+const Color = ({ colors }) => {
     let { name } = useParams();
 
     // if the ColorPicker identifies the color as a hex code
@@ -25,12 +25,16 @@ const Color = () => {
 
     return (
         <>
-            <div style={{paddingTop: '200px', fontSize: '50px'}}>
-                This is the color {name}
-            </div>
-            <div style={{paddingTop: '50px', fontSize: '20px'}}>
-                <Link to="/colors">Pick another color</Link>
-            </div>
+        {colors.find(color => color.name === name) ? (
+            <>
+                <div style={{paddingTop: '200px', fontSize: '50px'}}>
+                    This is the color {name}
+                </div>
+                <div style={{paddingTop: '50px', fontSize: '20px'}}>
+                    <Link to="/colors">Pick another color</Link>
+                </div>
+            </>
+        ) : <Navigate to="/colors" />}
         </>
     )
 };
