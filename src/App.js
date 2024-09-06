@@ -17,8 +17,8 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<ColorPicker colors={colors}/>} />
-          <Route path="/color/:name" element={<Color/>} />
+          <Route path="/colors" element={<ColorPicker colors={colors}/>} />
+          <Route path="/colors/:name" element={<Color/>} />
         </Routes>
       </BrowserRouter>      
     </div>
